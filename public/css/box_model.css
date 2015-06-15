@@ -1,0 +1,85 @@
+div {
+	height: 50px;
+	width: 50px;
+	padding:10px;
+	border: 1px solid black;
+	font-weight: bold;
+	margin-top: 10px;
+	float: left;
+	margin: 25px;
+	text-shadow: 1px 1px black;
+	color:white;
+	font-size: 15px;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+#red {	
+	background-color: red;
+}
+
+#orange {
+	border: 1px solid black;
+	background-color: orange;
+}
+
+#yellow {
+	border: 1px solid black;
+	background-color: yellow;
+}
+
+#green{
+	border: 1px solid black;
+	background-color: green;
+	margin-top: 50px;
+	clear: left;
+}
+
+#blue{
+	border: 1px solid black;
+	background-color: blue;
+	margin-top: 50px;
+}
+
+#purple{
+	border: 1px solid black;
+	background-color: magenta;
+	margin-top: 50px;
+}
+
+main {
+	width: 500px;
+	margin: 0 auto;
+/*	background-image: url("/img/bowtie_kitten.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;*/
+}
+
+a:visited {
+	color: blue;
+}
+
+a:hover{
+	color:red;
+}
+
+img {
+	position: relative;
+	top: -90px;
+	right: -40px;
+}
+
+.ribbon{
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	z-index: 1;
+
+}
+
+
+
+

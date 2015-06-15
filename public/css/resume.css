@@ -1,0 +1,26 @@
+
+.col-md-12 {
+	border-top: 10px solid #E0E0E0;
+	/*border-bottom: 10px solid #5BC0DE;*/
+
+}
+
+/*This is to align my text with the main resume labels like Experience and Skills*/
+.col-md-9, .skills {
+	margin-top: 30px;
+}
+
+/*This class helped me to indent secondary information in my education section*/
+.indent {
+	text-indent: 30px;
+}
+
+.grey {
+	background-color: #E0E0E0;
+}
+
+/*This class only affects my career objective. I wanted it to stand out so I gave it a class of lead and aligned 
+using the margin property.*/
+.lead {
+	margin-top: 15px;
+}
