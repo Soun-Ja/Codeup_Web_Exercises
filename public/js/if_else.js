@@ -6,6 +6,8 @@ var color = colors[Math.floor(Math.random()*colors.length)];
 var favorite = 'red'; // TODO: change this to your favorite color from the list
 
 // TODO: Create a block of if/else statements to check for every color except indigo and violet.
+console.log(color);
+
 if (color == "red") {
 	console.log("Red is the selected color.");
 }else if (color =="orange") {
