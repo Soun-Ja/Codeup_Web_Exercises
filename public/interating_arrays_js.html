@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Array Exercise</title>
+	</head>
+	<body>
+		<script>
+
+			(function () {
+
+				"use strict";
+
+				// todo:
+				// Create an array of 4 names using literal array notation, in a variable called 'names'.
+
+				var names = ["Bob", "Sue", "Mary", "John"];
+				
+				// todo:
+				// Create a log statement that will log the number of elements in the names array.
+
+				console.log(names.length);
+				
+				// todo:
+				// Create log statements that will print each of the names array elements individually.
+				console.log("First Name: " + names[0]);
+				console.log("Second Name: " + names[1]);
+				console.log("Third Name: " + names[2]);
+				console.log("Fourth Name: " + names[3]);
+
+				for (var i = 0; i < names.length; i++){
+					console.log("The name at index " + i + " is " + names[i]);
+				}
+
+				names.forEach(function(element, index, array){
+					console.log("The name at index " + index + " is: " + element);
+				});
+
+
+			})();	
+
+		</script>
+	
+	</body>
+</html>
