@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<title>Week 1: JavaScript Challenge #1</title>
+
+	</head>
+	<body>
+
+		<h1>Week One: JS Challenge #1</h1>
+
+		<script>
+
+			"use strict";
+
+			(function () {
+
+				function helloWorld(input) {
+
+					if (input === ""){
+						return "Hello, World!";
+					}
+
+					if (typeof input === "string" && input !== ""){
+						return "Hello " + input;
+					}
+
+					if (typeof input !== "string"){
+						return "That is not a vaild input.";
+					}
+
+				}	
+
+				console.log(helloWorld(""));
+				console.log(helloWorld("Codeup!"));
+				console.log(helloWorld(false));
+				
+
+			})();
+		</script>
+	
+	</body>
+</html>
