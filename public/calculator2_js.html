@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>JS Calculator</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/calculator2.css">
+	</head>
+	<body>
+
+		<h1>JS Calculator!</h1>
+
+		<div class="calculator_body">
+			<form>
+				<p>  
+					<input id="left_operand" name="left_operand" type="text" class="operand" readonly>
+					<input id="operation" name="operation" type="text" readonly>
+					<input id="right_operand" name="right_operand" type="text" class="operand" readonly>
+
+				</p>
+
+				<div class="button_body">	
+					<p>
+						<button id="one" type="button" value="1" class="number"> 1 </button>
+						<button id="two" type="button" value="2" class="number"> 2 </button>
+						<button id="three" type="button"value="3"class="number"> 3 </button>
+						<button id="plus" type="button" value="+" class="operator"> + </button>
+
+					</p>	
+					<p>
+						<button id="four" type="button" value="4" class="number"> 4 </button>
+						<button id="five" type="button" value="5" class="number"> 5 </button>
+						<button id="six" type="button" value="6" class="number"> 6 </button>
+						<button id="minus" type="button" value="-" class="operator"> - </button>
+					</p>	
+					<p>
+						<button id="seven" type="button" value="7" class="number">  7 </button>
+						<button id="eight" type="button" value="8" class="number"> 8 </button>
+						<button id="nine" type="button" value="9" class="number"> 9 </button>
+						<button id="product" type="button" value="*" class="operator"> * </button>
+					</p>
+					<p>
+						<button id="clear" type="button"> C </button>
+						<button id="zero" type="button" value="0" class="number"> 0 </button>
+						<button id="decimal" type="button" value="."> . </button>
+						<button id="quotient" type="button" value="/" class="operator"> / </button>
+					</p>
+					<p>
+						<button id="equals" type="button"> = </button>
+					</p>
+				</div>				
+			</form>
+		</div>	
+		<script>
+
+			"use strict";
+
+
+			(function(){
+
+				var leftOperand = document.getElementById("left_operand");
+				var operator = document.getElementById("operation");
+				var rightOperand = document.getElementById("right_operand");
+
+				var numbersArray = document.getElementsByClassName("number");
+				var operatorsArray = document.getElementsByClassName("operator");
+
+				var plus = document.getElementById("plus").value;
+				var minus = document.getElementById("minus").value;
+				var product = document.getElementById("product").value;
+				var quotient = document.getElementById("quotient").value;
+
+				var decimalPoint = document.getElementById("decimal").value;
+
+				// Creates an array with my button values 0 - 9 and attaches an event listener
+				// to each one.
+
+				for(var i = 0; i < numbersArray.length; i++){
+					numbersArray[i].addEventListener("click",clickNumber,false);
+				}
+
+				// Populates the number I click into the left or right operand field
+
+				function clickNumber (){
+				 	if (operator.value == ""){
+				 		leftOperand.value += this.value;
+				 		console.log(leftOperand.value); 
+				 	} else {
+				 		rightOperand.value += this.value; 
+				 	} 
+				}
+
+				// Creates and array of operators and attaches event listner to each one.
+
+				for (var i = 0; i < operatorsArray.length; i++){
+				 	operatorsArray[i].addEventListener("click", clickOperators, false);
+				}
+
+				// Populates the operator I click
+				function clickOperators (){
+					operator.value = this.value;
+				}
+
+				//Decimal point
+
+				function decimalClick (){
+					if(operator.value == ""){
+						if(leftOperand.value.indexOf(".") == -1){
+							leftOperand.value += decimalPoint;
+						}		
+					}else if (rightOperand.value.indexOf(".") == -1){
+						rightOperand.value += decimalPoint;
+					}				
+				} 
+						
+				document.getElementById('decimal').addEventListener('click', decimalClick, false);
+		
+				// Equals Button
+				function equals (){
+					if(operator.value == plus){
+						leftOperand.value = parseFloat(leftOperand.value) + parseFloat(rightOperand.value);
+						rightOperand.value = "";
+
+					} else if (operator.value == minus){
+						leftOperand.value = parseFloat(leftOperand.value) - parseFloat(rightOperand.value);
+						rightOperand.value = "";
+
+					} else if (operator.value == product){
+						leftOperand.value = parseFloat(leftOperand.value) * parseFloat(rightOperand.value);
+						rightOperand.value = "";
+
+					} else if (operator.value == quotient){
+						leftOperand.value = parseFloat(leftOperand.value) / parseFloat(rightOperand.value);
+						rightOperand.value = "";
+					}
+				}
+
+				document.getElementById('equals').addEventListener('click', equals, false);
+
+
+				// Clear Button
+				function Clear () {
+					leftOperand.value = "";
+					rightOperand.value = "";
+					operator.value = "";
+				}
+
+				document.getElementById('clear').addEventListener('click', Clear, false);
+
+
+			})();
+
+		</script>
+	</body>
+</html>		
