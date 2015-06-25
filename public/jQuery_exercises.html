@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>jQuery Exercises</title>
+</head>
+<body>
+	<h1>jQuery Exercises</h1>
+
+	<section class="info">
+		<div id="lamp_wrapper">
+			<h2>I'm learning the LAMP-Stack</h2>
+			<ul>
+				<li class="codeup">Linux</li>
+				<li>Apache</li>
+				<li class="codeup">MySQL</li>
+				<li>PHP</li>
+			</ul>
+
+			<img id="lamp_stack" src="/img/lamp.jpeg">
+		</div>
+		<div id="food_wrapper">	
+			<h2>My Top Five Favorite Foods</h2>
+			<p>These are the foods I like.</p>
+			<ol>
+				<li>Soup</li>
+				<li>SeaFood</li>
+				<li>Steak</li>
+				<li>Asian Food</li>
+				<li id="codeup">Bacon</li>
+			</ol>
+		</div>	
+	</section>	
+
+	<script src="/js/jquery-1.11.3.js"></script>
+	<script>
+
+		"use strict";
+
+		$(document).ready(function(){
+			$(".codeup").css("border","1px solid #F00");
+		})
+
+
+	</script>
+
+</body>
+</html>
