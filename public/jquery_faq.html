@@ -95,27 +95,27 @@
 				$(document).ready(function(){
 					$("#link").click(function(event){
 						event.preventDefault();
-						$("dd").fadeToggle(1000);
+						$("dd").slideToggle(1000);
 					});
 
 					$("aside").children("ul").each(function(index){
 						$(this).children().first("li").css("font-weight", "bold");
 					});
 
-					$("li").click(function(){
-						$(this).parent().fadeToggle();
-					});	
+					// $("li").click(function(){
+					// 	$(this).parent().slideToggle();
+					// });	
 
 					$(".yellow_stone").click(function(){
-						$(".yellow_stone_facts").fadeToggle();
+						$(".yellow_stone_facts").slideToggle();
 					});
 
 					$(".glacier").click(function(){
-						$(".glacier_facts").fadeToggle();
+						$(".glacier_facts").slideToggle();
 					});
 
 					$(".badlands").click(function(){
-						$(".badlands_facts").fadeToggle();
+						$(".badlands_facts").slideToggle();
 					});
 
 					// $("#link2").click(function(event){
