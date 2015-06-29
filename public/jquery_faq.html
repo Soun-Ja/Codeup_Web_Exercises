@@ -56,16 +56,16 @@
 		</main>	
 
 		<aside>
-			<h3>Yellow Stone National Park</h3>
-				<ul>
+			<h3 class="yellow_stone">Yellow Stone National Park</h3>
+				<ul class="yellow_stone_facts">
 					<li>Fact</li>
 					<li>Fact</li>
 					<li>Fact</li>
 					<li>Fact</li>
 				</ul>
 
-			<h3>Glacier National Park</h3>
-				<ul>
+			<h3 class="glacier">Glacier National Park</h3>
+				<ul class="glacier_facts">
 					<li>Fact</li>
 					<li>Fact</li>
 					<li>Fact</li>
@@ -73,15 +73,15 @@
 				</ul>
 		
 		
-			<h3>Badlands National Park</h3>
-				<ul>
+			<h3 class="badlands">Badlands National Park</h3>
+				<ul class="badlands_facts">
 					<li>Fact</li>
 					<li>Fact</li>
 					<li>Fact</li>
 					<li>Fact</li>
 			</ul>
 
-			<a id="link2" href="#">Toggle 2</a>
+			<!-- <a id="link2" href="#">Toggle 2</a> -->
 
 		</aside>
 			
@@ -95,7 +95,7 @@
 				$(document).ready(function(){
 					$("#link").click(function(event){
 						event.preventDefault();
-						$("dd").toggle();
+						$("dd").fadeToggle(1000);
 					});
 
 					$("aside").children("ul").each(function(index){
@@ -103,11 +103,19 @@
 					});
 
 					$("li").click(function(){
-						$(this).parent().toggle();
+						$(this).parent().fadeToggle();
 					});	
 
-					$("h3").click(function(){
-						$("ul").show();
+					$(".yellow_stone").click(function(){
+						$(".yellow_stone_facts").fadeToggle();
+					});
+
+					$(".glacier").click(function(){
+						$(".glacier_facts").fadeToggle();
+					});
+
+					$(".badlands").click(function(){
+						$(".badlands_facts").fadeToggle();
 					});
 
 					// $("#link2").click(function(event){
