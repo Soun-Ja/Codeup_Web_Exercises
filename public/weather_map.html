@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Open Weather Map</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/weather_map.css">	
+	</head>
+	<body>
+		<main>
+			<header>
+				<div class="container-fluid">
+					<h1>Three Day Forecast</h1>
+				</div>
+			</header>
+
+			<section>
+				<div id="forecast_container">
+					<div id="three_day_forecast">
+						<div id="city">
+						</div>
+						<div id="day_0_forecast" class="forecast_box">
+						</div>
+						<div id="day_1_forecast" class="forecast_box">
+						</div>
+						<div id="day_2_forecast" class="forecast_box">
+						</div>
+					</div>
+				</div>							
+			
+				<div id="map-canvas"></div>	
+	
+
+		<script src="/js/jquery-1.11.3.js"></script>
+		<script src="/js/moment.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE9nEBYoB7r7f85sZOB_te-M18bUI34IA"></script>
+		
+		<script>
+
+			"use strict";
+
+			(function(){
+
+				var latitude;
+				var longitude;
+
+				var getLocationWeatherData = function(data){
+					var latLongRequest = $.get("http://api.openweathermap.org/data/2.5/forecast/daily?",{
+					  	APPID: "f9f394bfb978e35d0bb1ccc7eca75078",  						  		
+			 			lat: latitude,	
+			 			lon: longitude,
+					  	units: "imperial",
+					  	cnt: "3"
+					 });
+
+					latLongRequest.always(function(){
+						console.log("request sent");
+					});
+
+					latLongRequest.fail(function(data, error){
+						console.log(error);
+						console.log(ajaxRequest2.status);
+					});
+
+					latLongRequest.done(function(data){
+						console.log(data);
+						var htmlString = " ";
+						var htmlString2 = " ";
+						for(var i = 0; i < data.list.length; i++){
+							htmlString += "<p>" + data.city.name + "</p>";
+							htmlString += "<p>" + moment.unix(data.list[i].dt).format("MMM Do YYYY") + "</p>";
+							htmlString += "<p>" + data.list[i].temp.min +"°"+ " / "+ data.list[i].temp.max + "°" + "</p>";
+							htmlString += "<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' >";
+							htmlString += "<p> Clouds: " + data.list[i].weather[0].description + "</p>";
+							htmlString += "<p> Humidity: " + data.list[i].humidity + "</p>";
+							// htmlString += "<p> Wind Speed: " + data.list[i].wind.speed + "</p>";
+							htmlString += "<p> Pressure: " + data.list[i].pressure + "</p>";
+							$("#day_" + i + "_forecast").append(htmlString);
+							htmlString = " ";
+						}
+						htmlString2 += "<h3> Three day forecast for " + data.city.name + "<h3>";
+						$("#city").append(htmlString2);
+					});			
+				}
+
+				var address = "7439 San Pedro Ave";
+
+	  			// create geocoder object
+	  			var geocoder = new google.maps.Geocoder();
+
+	  			// use geocode on the address
+	  			geocoder.geocode( { 'address': address}, function(results, status) {
+	  				if (status == google.maps.GeocoderStatus.OK) {  
+						// Set our map options
+						var mapOptions = {
+						// Set the zoom level
+						zoom: 4,
+						// This sets the center of the map at our location
+						center: results[0].geometry.location,
+						}
+	  					// render the map
+	  					var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	  			
+	  					google.maps.event.addListener(map, 'click', function(event,data) {
+	  						console.log(event.latLng);
+	  						console.log(event.latLng.lat());
+	  						console.log(event.latLng.lng());
+    						placeMarker(event.latLng, map);
+    						latitude = event.latLng.lat();
+    						longitude = event.latLng.lng();
+    						getLocationWeatherData(data);
+    						$(".forecast_box").html(" ");
+    						$("#city").html(" ");
+
+  						});
+
+  						function placeMarker(position, map) {
+  							var marker = new google.maps.Marker({
+    							position: position,
+    							draggable: true,
+    							// animation: google.maps.Animation.DROP,
+    							map: map
+  							});
+  						map.panTo(position);
+						}								
+  					}	
+  				});		
+
+			})();
+		</script>	
+	</body>
+</html>
